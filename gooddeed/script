@@ -1,0 +1,122 @@
+<html>
+
+<script>
+ 
+class Brand {
+ 
+constructor(brandId,brandName,models)
+ {
+this.brandId=brandId;
+this.brandName=brandName;
+this.models=models;
+ }
+ 
+}
+ 
+class Model {
+ 
+constructor(modelId, modelName,users)
+ {
+this.modelId=modelId;
+this.modelName=modelName;
+this.users=users;
+ }
+ 
+}
+class User {
+ 
+constructor(userId, userName, age, salary,phoneObj1)
+ {
+this.userId=userId;
+this.userName=userName;
+this.age=age;
+this.salary=salary;
+this.phoneObj1=phoneObj1;
+ }
+}
+ 
+class Phone {
+constructor(phoneId,phoneNumber)
+ {
+this.phoneId=phoneId;
+this.phoneNumber=phoneNumber;
+ }
+}
+ 
+class Adult {
+constructor(adultId,adultAge,adultSalary)
+ {
+this.adultId=adultId;
+this.adultAge=adultAge;
+this.adultSalary=adultSalary;
+ }
+}
+ 
+var phoneObj1=new Phone(1,7829875549);
+var phoneObj2=new Phone(2,9934567213)
+ 
+var users=new Array();
+var user1=new User(1,"Aditi",9,1000,phoneObj1);
+var user2=new User(2,"Vatsal",21,3000,phoneObj2);
+var user3=new User(3,"ramesh",29,2000000,phoneObj2);
+ 
+users.push(user1);
+users.push(user2);
+users.push(user3);
+ 
+var model1=new Model(1,"A5",users);
+var model2=new Model(2,"A9",users);
+ 
+var model3=new Model(1,"X10",users);
+var model4=new Model(2,"X9",users);
+
+
+ 
+var models1=new Array();
+ 
+var models2=new Array();
+ 
+models1.push(model1);
+models1.push(model2);
+ 
+models2.push(model3);
+models2.push(model4);
+ 
+var brand1=new Brand(1,"nokia",models1);
+var brand2=new Brand(2,"apple",models2);
+ 
+console.log(brand1);
+ 
+var adults=[];
+adults=users.filter(user=>user.age>18).map(userOb=>new Adult(userOb.userId,userOb.age,userOb.salary));
+ 
+console.log(adults);
+ 
+function adultFilter(adults)
+{
+var newAdults=adults.filter(adult=>adult.adultAge>25 && adult.adultSalary>2000);
+return newAdults;
+}
+ 
+var updatedAdults=adultFilter(adults);
+console.log(updatedAdults);
+ 
+function findSum(adults)
+{
+
+var sumSalary=adults.reduce((sal,salry)=>{
+return sal+salry.adultSalary;},0);
+ 
+return sumSalary;
+
+}
+ 
+var sumFinal=findSum(adults);
+console.log(sumFinal);
+
+</script>
+
+</html>
+
+
+
